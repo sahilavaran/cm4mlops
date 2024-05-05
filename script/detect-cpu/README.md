@@ -51,7 +51,7 @@ Maintainers: [Public MLCommons Task Force on Automation and Reproducibility](htt
 
 ```mermaid
 graph TD;
-detect-cpu,586c8a43320142f7 --> mlcommons@cm4mlops,9e97bb72b0474657;
+detect-cpu,586c8a43320142f7 --> detect-os,9e97bb72b0474657;
 ```
 
 #### Run this script from Python
