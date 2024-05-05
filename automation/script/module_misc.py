@@ -1,6 +1,32 @@
 import os
 from cmind import utils
-    
+
+
+
+def generate_mermaid_code(self_module, meta, deps):
+    x ='```mermaid\ngraph TD;\n'
+    parent = meta['alias']+','+meta['uid']
+    for dep in deps:
+       # Attempt to find related CM scripts
+       r = self_module.cmind.access({'action':'find',
+                                          'automation':'script',
+                                          'tags':dep['tags']})
+       if r['return']==0:
+            lst = r['list']
+
+            if len(lst)==0:
+                y.append(extra_space+'       - *Warning: no scripts found*')
+            else:
+                for s in lst:
+                    s_repo_meta = s.repo_meta
+
+                    alias = s_repo_meta.get('alias','')
+                    uid = s_repo_meta.get('uid','')
+
+       x = x+ parent + ' --> ' + alias+','+uid+';\n'
+    x = x +"```\n"
+    return x
+
 # Meta deps
 def process_deps(self_module, meta, meta_url, md_script_readme, key, extra_space='', skip_from_meta=False, skip_if_empty=False):
 
@@ -162,6 +188,9 @@ def doc(i):
 
         alias = meta.get('alias','')
         uid = meta.get('uid','')
+
+
+        
 
         script_meta[alias] = meta
 
@@ -387,6 +416,7 @@ def doc(i):
         x = '* CM meta description of this script: *[GitHub]({})*'.format(meta_url)
         md_script.append(x)
 
+
 #        x = '* CM automation "script": *[Docs]({})*'.format('https://github.com/octoml/ck/blob/master/docs/list_of_automations.md#script')
 #        md_script.append(x)
 #        md_script_readme.append(x)
@@ -524,6 +554,13 @@ def doc(i):
                                  ''
                                  ]
 
+
+
+        deps = meta.get('deps', [])
+        mermaid_code = generate_mermaid_code(self_module, meta, deps)
+        if mermaid_code:
+           md_script_readme.append(mermaid_code)
+                
         if input_description and len(input_description)>0:
             x = 'Input Flags'
             md_script_readme.append('')

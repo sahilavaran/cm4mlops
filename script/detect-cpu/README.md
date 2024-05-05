@@ -49,6 +49,11 @@ Maintainers: [Public MLCommons Task Force on Automation and Reproducibility](htt
 `cmr "detect cpu detect-cpu info " `
 
 
+```mermaid
+graph TD;
+detect-cpu,586c8a43320142f7 --> mlcommons@cm4mlops,9e97bb72b0474657;
+```
+
 #### Run this script from Python
 
 <details>
