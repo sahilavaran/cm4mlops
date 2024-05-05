@@ -7,10 +7,7 @@ you can find a human-readable catalog of these automation recipes [here](../../d
 
 ```mermaid
 graph TD;
-    A-->B;
-    A-->C;
-    B-->D;
-    C-->D;
+   detect-cpu,586c8a43320142f7 --> detect-os,863735b7db8c44fc;
 ```
 
 ### License
