@@ -22,6 +22,10 @@
       ]
     },
     {
+      "tags": "get,compiler",
+      "names": [ "compiler" ]
+    },
+    {
       "env": {
         "CM_GIT_CHECKOUT_PATH_ENV_NAME": "CM_PYTORCH_SRC_REPO_PATH"
       },
@@ -129,7 +133,7 @@
       "env": {
         "CM_CONDA_ENV": "yes",
         "CM_MLPERF_INFERENCE_INTEL": "yes",
-        "CM_MLPERF_INFERENCE_INTEL_RESNET50_MODEL": "yes",
+        "CM_MLPERF_INFERENCE_INTEL_MODEL": "resnet50",
         "USE_CUDA": "0"
       },
       "deps": [
@@ -196,7 +200,7 @@
       "env": {
         "CM_CONDA_ENV": "yes",
         "CM_MLPERF_INFERENCE_INTEL": "yes",
-        "CM_MLPERF_INFERENCE_INTEL_RETINANET_MODEL": "yes",
+        "CM_MLPERF_INFERENCE_INTEL_MODEL": "retinanet",
         "USE_CUDA": "0"
       },
       "deps": [
