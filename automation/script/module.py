@@ -249,8 +249,7 @@ class CAutomation(Automation):
 
         # If first script run, check if can write to current directory
         if not recursion and not i.get('skip_write_test', False):
-            if not can_write_to_current_directory():
-                logger.error('Current directory "{}" is not writable - please change it'.format(os.getcwd()))       
+            if not can_write_to_current_directory(): 
                 return {'return': 1, 'error': 'Current directory "{}" is not writable - please change it'.format(os.getcwd())}
 
             # Check if has default config
@@ -280,7 +279,7 @@ class CAutomation(Automation):
                 return r
              
             cm_input = r['cm_input']
-            logging.info("Merging extra CLI input into main input")
+            logging.info("%sMerging extra CLI input into main input", ' ' * recursion_spaces)
             utils.merge_dicts({'dict1':i, 'dict2':cm_input, 'append_lists':True, 'append_unique':True})
 
         # Check simplified CMD: cm run script "get compiler"
@@ -570,7 +569,8 @@ class CAutomation(Automation):
 #            print ('')
 
         if not run_state.get('tmp_silent', False):
-            logger.info('Running: %s', cm_script_info)
+            logger.info('')
+            logger.info('%s* %s', ' ' * recursion_spaces, cm_script_info)
 
 
         #############################################################################
